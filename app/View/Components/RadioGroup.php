@@ -20,6 +20,17 @@ class RadioGroup extends Component
     }
 
     /**
+     * Get options with Labels
+     * @return array
+     */
+    public function optionsWithLabels(): array
+    {
+        return array_is_list($this->options) ?
+            array_combine($this->options, $this->options)
+            : $this->options;
+    }
+
+    /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string

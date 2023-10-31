@@ -42,14 +42,15 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
+
     public function employer(): HasOne
     {
         return $this->hasOne(Employer::class);
     }
+
     public function jobApplications(): HasMany
     {
-        return $this->hasMany(Employer::class);
+        return $this->hasMany(JobApplication::class);
     }
 }

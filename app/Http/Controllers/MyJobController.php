@@ -16,10 +16,10 @@ class MyJobController extends Controller
         $this->authorize('viewAnyEmployer', Job::class);
         return view('my_job.index',
             [
-                'jobs' => auth()->user()->employer->jobs()->with(
-                [
-                    'employer', 'jobApplications', 'jobApplications.user'
-                ])->get()
+                'jobs' => auth()->user()->employer->jobs()
+                    ->with(['employer', 'jobApplications', 'jobApplications.user'])
+                    ->withTrashed()
+                    ->get()
             ]);
     }
 
